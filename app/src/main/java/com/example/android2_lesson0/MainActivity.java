@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CODE){
             if (resultCode == RESULT_OK){
                 Task task = (Task) data.getSerializableExtra(FormActivity.MY_KEY);
-                
+
             }
         }
     }
