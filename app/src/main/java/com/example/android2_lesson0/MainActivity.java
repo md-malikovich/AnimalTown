@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -23,12 +21,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
 
     static final int CODE = 444;
+    Adapter adapter;
+    RecyclerView recyclerView;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -36,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        adapter = new Adapter();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(adapter);
+
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK){
                 Task task = (Task) data.getSerializableExtra(FormActivity.MY_KEY);
                 Log.d("ololo", "receive task");
-
+                adapter.addNewTask(task);
             }
         }
     }
