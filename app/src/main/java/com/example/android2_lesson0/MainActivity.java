@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CODE){
             if (resultCode == RESULT_OK){
                 Task task = (Task) data.getSerializableExtra(FormActivity.MY_KEY);
+                Log.d("ololo", "receive task");
 
             }
         }
