@@ -31,7 +31,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.onBind(task.get(position));
+        holder.onBind(task.get(position));
     }
 
     @Override
